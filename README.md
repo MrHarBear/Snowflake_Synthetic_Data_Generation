@@ -1,4 +1,4 @@
-# Snowflake_Synthetic_Data_Generation
+# Snowflake Synthetic Data Generation
 In the world of ML and AI, data is king. But real-world data can be a real pain to deal with. Using real data is basically a legal minefield and comes with so much scrutiny. And rightfully so, we want to make sure our individual data and privacy are protected. However, the cost and time involved in collecting, cleaning, and storing data can be astronomical and often completely inhibits a project from getting started.
 
 That's where synthetic data comes in – it's like the stunt-double of the data world, the heroes behind the scenes that actually make the actions happen!
@@ -25,13 +25,15 @@ The architecture above illustrates the basics steps of how we will execute the s
 > If you are using a trial account, the `SETUP.sql` part will give you some errors. Specifically, you will not be able to create `NETWORK RULE` and `INTEGRATION` since this feature is not enabled for trial accounts. So please ignore those. Similarly, instead of running the first notebook (i.e. part 0), you will need to manually upload the `csv` files into Snowflake and in the `DATA` schema.
 
 ## Setup
-1. Run the `Setup.sql` script in Snowflake, this will create all the necessary objects
+1. Run the `Build25London - Synthetic_Data_Generation.sql` script in Snowflake, this will create all the necessary objects
 - **Database**: `BUILD_LONDON_25`
 - **Schema**: `NOTEBOOK` and `Data`
 - **Warehouse**: `Demo_BUILD_WH`
 - **Network Rule**: `GITHUB_NETWORK_RULE`
 - **External Access Integration**: `GITHUB_EXTERNAL_ACCESS_INTEGRATION`
-2. Upload the 3 Notebooks into the `SWT2024_DEMO_AUTO_INSURANCE.NOTEBOOK` schema. Use the `Demo_WH` Warehouse.
+2. Upload the two Notebooks into the `BUILD_LONDON_25.NOTEBOOK` schema. Use the `Demo_BUILD_WH` Warehouse.
+<img width="579" alt="Notebook setting" src="https://github.com/user-attachments/assets/ee83c200-76ca-436a-8fb7-4e27d1f5e2b0" />
+
 3. Run through the notebooks and enjoy! If you are using a trial account, you will need to manually upload the `csv` files into Snowflake and in the `DATA` schema. The name of the data table must match the name of the csv files exactly. e.g. `claim_data.csv` should be `SWT2024_DEMO_AUTO_INSURANCE.DATA.CLAIM_DATA` table in Snowflake.
 
 ## Disclaimer:
