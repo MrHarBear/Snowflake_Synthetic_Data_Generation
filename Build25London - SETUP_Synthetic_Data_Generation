@@ -1,0 +1,25 @@
+-- Run this script on Snowflake to create db, schema and required objects.
+CREATE DATABASE IF NOT EXISTS BUILD_LONDON_25;
+CREATE SCHEMA IF NOT EXISTS DATA;
+CREATE SCHEMA IF NOT EXISTS NOTEBOOK;
+USE DATABASE BUILD_LONDON_25;
+
+CREATE OR REPLACE WAREHOUSE DEMO_BUILD_WH
+  WAREHOUSE_SIZE = 'X-Small'
+  AUTO_SUSPEND = 60
+  -- here we can use large memory warehouses if we wanted to
+  -- WAREHOUSE_TYPE = { STANDARD | 'SNOWPARK-OPTIMIZED' } 
+  -- RESOURCE_CONSTRAINT = { MEMORY_1X| MEMORY_1X_x86 | MEMORY_16X | MEMORY_16X_x86 | MEMORY_64X | MEMORY_64X_x86 }
+  ;
+
+-- Network Policy Rule for GitHub
+CREATE OR REPLACE NETWORK RULE GITHUB_NETWORK_RULE
+  MODE = EGRESS 
+  TYPE = HOST_PORT VALUE_LIST = ('github.com', 'raw.githubusercontent.com','media.githubusercontent.com')
+  COMMENT = 'Allow access to GitHub';
+
+-- External Access Integration for the Policy and Notebook Integration
+CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION GITHUB_EXTERNAL_ACCESS_INTEGRATION
+    ALLOWED_NETWORK_RULES = ('GITHUB_NETWORK_RULE')
+    ENABLED = TRUE
+    COMMENT = 'External access integration for GitHub';
