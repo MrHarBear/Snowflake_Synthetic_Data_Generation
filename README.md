@@ -40,3 +40,4 @@ This is a simple workflow highlighting the capabilities we have in Snowflake whe
 3. Run through the notebooks and enjoy 🎉! If you are using a trial account, you will need to manually upload the `csv` files into Snowflake and in the `DATA` schema. The name of the data table must match the name of the csv files exactly. e.g. `claim_data.csv` should be `SWT2024_DEMO_AUTO_INSURANCE.DATA.CLAIM_DATA` table in Snowflake.
 
 ## Disclaimer:
+This repository is for demonstration purposes only. Use at your own risk.
